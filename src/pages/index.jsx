@@ -7,8 +7,8 @@ export default function Root() {
   return (
     <Routes>
       <Route path="/" element={<Main />} />
-      <Route path="/5" element={<Basket />} />
-      <Route path="/7" element={<CardDetails />} />
+      <Route path="/basket" element={<Basket />} />
+      <Route path="/card/:id" element={<CardDetails />} />
     </Routes>
   );
 }

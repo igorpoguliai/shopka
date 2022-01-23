@@ -7,7 +7,6 @@ export const StyledCard = styled.div`
 
   width: 260px;
   padding: 16px 16px 12px;
-  cursor: pointer;
   margin: auto;
   margin-bottom: 24px;
 
@@ -31,7 +30,7 @@ export const ProductPicture = styled.img`
 export const Title = styled.h1`
   font-size: 16px;
   line-height: 24px;
-  height: 75px;
+  height: 115px;
 `;
 
 export const Price = styled.h2`
@@ -44,24 +43,32 @@ export const Price = styled.h2`
 export const Desc = styled.p`
   font-size: 14px;
   line-height: 20px;
-  height: 45px;
+  height: 65px;
   color: #787885;
 `;
 
-export const Button = styled.button`
-  background: none;
+export const Wrapper = styled.div`
   border: 1px solid #9dc2ff;
   border-radius: 4px;
-  display: flex;
-  gap: 6px;
-  align-items: center;
   padding: 4px 12px;
   cursor: pointer;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  color: #2264d1;
   margin-left: auto;
+
+  a {
+    text-decoration: none;
+    color: #2264d1;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    background: #ebf2ff;
+  }
 `;
 
 export const Block = styled.div`

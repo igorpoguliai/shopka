@@ -21,7 +21,7 @@ export const Main = styled.main`
   }
 `;
 
-export const Product = styled.img`
+export const ProductPicture = styled.img`
   max-width: 600px;
   max-height: 605px;
   padding: 30px 50px;
@@ -52,6 +52,28 @@ export const Price = styled.h2`
 
 export const Wrapper = styled.div`
   padding-left: 24px;
+
+  a {
+    display: flex;
+    gap: 12px;
+    max-width: fit-content;
+    text-decoration: none;
+    align-items: center;
+    padding: 11px 12px 11px 16px;
+    margin-top: 16px;
+    background: #ebf2ff;
+    border-radius: 4px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #2264d1;
+    cursor: pointer;
+
+    &:hover {
+      background: none;
+    }
+  }
 `;
 
 export const Block = styled.div`
@@ -80,20 +102,4 @@ export const Desc = styled.p`
   max-width: 680px;
   font-size: 16px;
   line-height: 24px;
-`;
-
-export const BackToShopingList = styled.button`
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  padding: 11px 12px 11px 16px;
-  margin-top: 16px;
-  background: #ebf2ff;
-  border-radius: 4px;
-  font-family: "Roboto", sans-serif;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 16px;
-  color: #2264d1;
-  cursor: pointer;
 `;

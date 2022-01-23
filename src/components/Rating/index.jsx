@@ -1,17 +1,15 @@
 import { ReactComponent as StarIcon } from "../../assets/icons/star.svg";
 import { Rating, Rate } from "./styled";
 
-export default function Stars() {
-  const rate = 2;
-
+export default function Stars({ rating }) {
   return (
     <>
-      {new Array(1, 2, 3, 4, 5).map((rating) => (
-        <Rating active={rating <= rate}>
+      {new Array(1, 2, 3, 4, 5).map((stars) => (
+        <Rating key={stars} active={stars <= rating.rate}>
           <StarIcon />
         </Rating>
       ))}
-      <Rate>4.77</Rate>
+      <Rate>{rating.rate}</Rate>
     </>
   );
 }

@@ -1,19 +1,5 @@
 import styled from "styled-components";
 
-export const Button = styled.button`
-  background: none;
-  font-family: "Quicksand", sans-serif;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 30px;
-  color: #2264d1;
-  padding: 5px 12px;
-  box-shadow: 0px 2px 4px rgba(27, 78, 163, 0.2),
-    0px 4px 8px rgba(41, 121, 255, 0.2);
-  border-radius: 4px;
-  cursor: pointer;
-`;
-
 export const Container = styled.div`
   max-width: 1320px;
   width: 100%;
