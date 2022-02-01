@@ -1,4 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import {
+  fontRoboto,
+  mainColor,
+  mainFont,
+  skyColor,
+} from "../../utils/constants";
 
 export const Container = styled.div`
   max-width: 1420px;
@@ -8,10 +14,7 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.main`
-  * {
-    font-family: "Inter", sans-serif;
-  }
-
+  font-family: ${mainFont};
   margin: 40px 0 60px;
   display: flex;
 
@@ -27,6 +30,7 @@ export const ProductPicture = styled.img`
   padding: 30px 50px;
   border: 1px solid rgba(34, 100, 209, 0.11);
   border-radius: 20px;
+  object-fit: contain;
 
   @media screen and (max-width: 575px) {
     max-width: 420px;
@@ -61,16 +65,17 @@ export const Wrapper = styled.div`
     align-items: center;
     padding: 11px 12px 11px 16px;
     margin-top: 16px;
-    background: #ebf2ff;
+    background: ${skyColor};
     border-radius: 4px;
-    font-family: "Roboto", sans-serif;
+    font-family: ${fontRoboto};
     font-weight: bold;
     font-size: 14px;
     line-height: 16px;
-    color: #2264d1;
+    color: ${mainColor};
     cursor: pointer;
 
     &:hover {
+      transition: 0.3s;
       background: none;
     }
   }
@@ -93,12 +98,36 @@ export const Button = styled.button`
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  color: #2264d1;
+  color: ${mainColor};
   cursor: pointer;
   margin-right: 27px;
+
+  svg {
+    stroke: #2979ff;
+    stroke-width: 5px;
+    width: 14px;
+    height: 13px;
+    fill: white;
+
+    ${({ active }) =>
+      active &&
+      css`
+        stroke-width: 2px;
+        fill: #f44336;
+        stroke: #f44336;
+      `}
+  }
+
+  &:active {
+    svg {
+      opacity: 0;
+      transform: scale(5);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+  }
 `;
 
-export const Desc = styled.p`
+export const Description = styled.p`
   max-width: 680px;
   font-size: 16px;
   line-height: 24px;

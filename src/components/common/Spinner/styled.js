@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mainColor } from "../../../utils/constants";
 
 export const Wrapper = styled.div`
   height: 100vh;
@@ -6,7 +7,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Spinner = styled.div`
-  color: #2264d1;
+  color: ${mainColor};
   font-size: 75px;
   overflow: hidden;
   width: 1em;

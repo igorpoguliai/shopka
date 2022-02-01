@@ -1,14 +1,11 @@
-import { setCardsAction } from "../redux/mainPage/action";
+import { API_BASE } from "../utils/constants";
 
-export function getProductInfo() {
-  return function (dispatch) {
-    fetch("https://fakestoreapi.com/products")
-      .then((response) => response.json())
-      .then((cards) => dispatch(setCardsAction(cards)));
-  };
+export async function getProducts() {
+  const response = await fetch(`${API_BASE}products/`);
+  return await response.json();
 }
 
-export async function getSelectedCard(id) {
-  const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+export async function getProduct(id) {
+  const response = await fetch(`${API_BASE}products/${id}`);
   return await response.json();
 }

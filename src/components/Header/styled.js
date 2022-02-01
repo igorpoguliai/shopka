@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import { mainColor, skyColor, secondFont } from "../../utils/constants";
 
 export const StyledHeader = styled.header`
+  font-family: ${secondFont};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,45 +10,34 @@ export const StyledHeader = styled.header`
   border-bottom: 1px solid #b4bbe2;
 `;
 
-export const Block = styled.div`
-  * {
-    font-family: "Quicksand", sans-serif;
-  }
-
-  position: relative;
-
-  &:hover {
-    div:last-child {
-      transform: scale(1.1);
-      transition: 200ms;
-
-      &:first-child {
-        transform: none;
-      }
-    }
-  }
-`;
-
 export const Wrapper = styled.div`
+  position: relative;
   font-size: 20px;
   line-height: 30px;
   padding: 5px 12px;
-  box-shadow: 0px 2px 4px rgba(27, 78, 163, 0.2),
-    0px 4px 8px rgba(41, 121, 255, 0.2);
+  box-shadow: 0 2px 4px rgba(27, 78, 163, 0.2),
+    0 4px 8px rgba(41, 121, 255, 0.2);
   border-radius: 4px;
   cursor: pointer;
 
   &:active {
-    background: #ebf2ff;
+    background: ${skyColor};
   }
 
   a {
     text-decoration: none;
-    color: #2264d1;
+    color: ${mainColor};
+  }
+
+  &:hover {
+    div {
+      transform: scale(1.1);
+      transition: 0.2s;
+    }
   }
 `;
 
-export const Circle = styled.div`
+export const AddedProducts = styled.div`
   width: 20px;
   height: 20px;
   font-size: 14px;

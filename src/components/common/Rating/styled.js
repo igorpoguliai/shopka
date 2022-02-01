@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { fontRoboto } from "../../../utils/constants";
 
 export const Rating = styled.span`
   svg {
@@ -13,7 +14,7 @@ export const Rating = styled.span`
 `;
 
 export const Rate = styled.span`
-  font-family: "Roboto", sans-serif;
+  font-family: ${fontRoboto};
   font-weight: 500;
   font-size: 14px;
   line-height: 22px;

@@ -7,7 +7,7 @@ const initialState = {
 export default function cardsReducer(state = initialState, action) {
   switch (action.type) {
     case SET_CARDS: {
-      const cards = action.payload;
+      const { cards } = action.payload;
       return {
         ...state,
         products: [...cards],

@@ -14,6 +14,8 @@ export const Main = styled.main`
   margin: 45px 0 25px;
   padding: 7px 16px 16px;
   display: grid;
+  grid-column-gap: 15px;
+  grid-row-gap: 25px;
   grid-template-columns: repeat(4, 1fr);
 
   @media screen and (max-width: 1198px) {

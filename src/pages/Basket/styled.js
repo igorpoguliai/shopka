@@ -1,4 +1,10 @@
 import styled from "styled-components";
+import {
+  mainFont,
+  fontRoboto,
+  mainColor,
+  skyColor,
+} from "../../utils/constants";
 
 export const Container = styled.div`
   max-width: 1320px;
@@ -7,46 +13,43 @@ export const Container = styled.div`
   margin: 0 auto;
   display: flex;
 
-  @media screen and (max-width: 1023px) {
+  @media screen and (max-width: 1198px) {
     flex-direction: column;
   }
 `;
 
 export const Main = styled.main`
-  * {
-    font-family: "Inter", sans-serif;
-  }
-
+  font-family: ${mainFont};
   margin-top: 35px;
 `;
 
-export const Total = styled.div`
-  padding: 30px 0 0 25px;
+export const Wrapper = styled.div`
+  padding: 23px 0 0 25px;
   position: sticky;
   top: -20px;
   height: 0;
 
-  @media screen and (max-width: 1023px) {
+  @media screen and (max-width: 1198px) {
     text-align: center;
     padding-left: 0px;
   }
 `;
 
-export const SumGoods = styled.div`
+export const Total = styled.div`
   font-weight: bold;
   font-size: 48px;
   line-height: 69px;
 `;
 
-export const Checkout = styled.button`
+export const Button = styled.button`
   background: none;
-  font-family: "Roboto", sans-serif;
+  font-family: ${fontRoboto};
   font-weight: bold;
   font-size: 24px;
   line-height: 28px;
-  color: #ebf2ff;
+  color: ${skyColor};
   padding: 10px 108px;
-  background: #2264d1;
+  background: ${mainColor};
   border-radius: 4px;
   cursor: pointer;
   margin-top: 73px;
@@ -55,7 +58,7 @@ export const Checkout = styled.button`
     transform: scale(0.99);
   }
 
-  @media screen and (max-width: 1023px) {
+  @media screen and (max-width: 1198px) {
     width: 100%;
     margin: 35px 0 10px;
   }
