@@ -1,8 +1,7 @@
 import {
   ADD_PRODUCT,
   BASKET_CHECKOUT,
-  DECREMENT,
-  INCREMENT,
+  SET_BASKET_COUNT,
   REMOVE_PRODUCT,
 } from "./types";
 
@@ -14,6 +13,7 @@ export default function basketReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_PRODUCT: {
       const { product } = action.payload;
+
       return {
         ...state,
         basket: [
@@ -25,34 +25,26 @@ export default function basketReducer(state = initialState, action) {
 
     case REMOVE_PRODUCT: {
       const { id } = action.payload;
+
       return {
         ...state,
         basket: state.basket.filter((item) => item.id !== id),
       };
     }
 
-    case INCREMENT: {
-      const { id } = action.payload;
+    case SET_BASKET_COUNT: {
+      const { id, direction } = action.payload;
+      const isIncrement = direction === "increment";
+
       return {
         ...state,
         basket: state.basket.map((item) => {
           return item.id === id
             ? {
                 ...item,
-                count: item.count + 1,
-                finalAmount: item.price * item.count,
+                count: isIncrement ? item.count + 1 : item.count - 1,
               }
             : item;
-        }),
-      };
-    }
-
-    case DECREMENT: {
-      const { id } = action.payload;
-      return {
-        ...state,
-        basket: state.basket.map((item) => {
-          return item.id === id ? { ...item, count: item.count - 1 } : item;
         }),
       };
     }

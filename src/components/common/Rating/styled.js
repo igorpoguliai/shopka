@@ -19,5 +19,5 @@ export const Rate = styled.span`
   font-size: 14px;
   line-height: 22px;
   color: #5e6366;
-  padding-left: 8px;
+  padding-left: 10px;
 `;

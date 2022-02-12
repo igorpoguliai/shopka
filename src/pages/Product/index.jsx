@@ -1,6 +1,7 @@
 import Header from "../../components/Header";
 import Stars from "../../components/common/Rating";
-import { ReactComponent as HeartIcon } from "../../assets/icons/heart.svg";
+import Button from "../../components/common/Button";
+import Loading from "../../components/common/Spinner";
 import { ReactComponent as BurgerIcon } from "./icons/burger.svg";
 import {
   Container,
@@ -9,39 +10,24 @@ import {
   Title,
   Price,
   Wrapper,
-  Block,
-  Button,
   Description,
 } from "./styled";
+import { getProduct } from "../../api/products";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
-import { getProduct } from "../../api/api";
-import Loading from "../../components/common/Spinner";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import {
-  addProductAction,
-  removeProductAction,
-} from "../../redux/basket/action";
+import useBasketClick from "../../hooks/useBasketClick";
+import { Flex } from "../../components/common/styled";
 
 export default function ProductPage() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-  const dispatch = useDispatch();
-  const { basket } = useSelector(({ basket }) => basket);
 
   useEffect(() => {
     getProduct(id).then((card) => setProduct(card));
   }, [id]);
 
-  const inBasketProduct = basket.some((item) => item.id === Number(id));
-
-  function handleBasketClick() {
-    return inBasketProduct
-      ? dispatch(removeProductAction(Number(id)))
-      : dispatch(addProductAction(product));
-  }
+  const [onBasketClick, inBasketProduct] = useBasketClick(Number(id), product);
 
   return (
     <>
@@ -53,15 +39,14 @@ export default function ProductPage() {
             <Wrapper>
               <Title>{product.title}</Title>
               <Price>${product.price}</Price>
-              <Block>
-                <Button active={inBasketProduct} onClick={handleBasketClick}>
-                  <HeartIcon />
-                  Add to card
+              <Flex center>
+                <Button onClick={onBasketClick} isActive={inBasketProduct}>
+                  {inBasketProduct ? "Delete card" : "Add to card"}
                 </Button>
                 <Stars rating={product.rating} />
-              </Block>
+              </Flex>
               <Description>{product.description}</Description>
-              <Link to={"/"}>
+              <Link to="/">
                 <BurgerIcon />
                 Back to shopping list
               </Link>

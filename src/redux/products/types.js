@@ -1,1 +1,2 @@
-export const SET_CARDS = "SET_CARDS";
+export const GET_CARDS = "GET_CARDS_ACTION";
+export const SET_ACTIVE_CATEGORY = "SET_ACTIVE_CATEGORY_ACTION";

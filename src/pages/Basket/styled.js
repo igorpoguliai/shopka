@@ -20,28 +20,30 @@ export const Container = styled.div`
 
 export const Main = styled.main`
   font-family: ${mainFont};
-  margin-top: 35px;
+  margin-top: 100px;
 `;
 
 export const Wrapper = styled.div`
   padding: 23px 0 0 25px;
   position: sticky;
-  top: -20px;
+  top: 65px;
   height: 0;
 
   @media screen and (max-width: 1198px) {
     text-align: center;
-    padding-left: 0px;
+    padding-left: 0;
   }
 `;
 
 export const Total = styled.div`
+  font-family: ${mainFont};
   font-weight: bold;
   font-size: 48px;
   line-height: 69px;
 `;
 
 export const Button = styled.button`
+  width: 100%;
   background: none;
   font-family: ${fontRoboto};
   font-weight: bold;

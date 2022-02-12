@@ -1,5 +1,5 @@
 import Stars from "../../../components/common/Rating";
-import { ReactComponent as HeartIcon } from "../../../assets/icons/heart.svg";
+import Button from "../../../components/common/Button";
 import { cutStringIfNeeded } from "../../../utils/helpers";
 import {
   StyledCard,
@@ -7,44 +7,33 @@ import {
   Title,
   Price,
   Description,
-  Button,
-  Block,
 } from "./styled";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import {
-  addProductAction,
-  removeProductAction,
-} from "../../../redux/basket/action";
+import { Flex } from "../../../components/common/styled";
+import useBasketClick from "../../../hooks/useBasketClick";
 
-export default function Card({ product, handleCardClick }) {
-  const dispatch = useDispatch();
-  const { basket } = useSelector(({ basket }) => basket);
+export default function Card({ product, onClick }) {
   const { id, image, title, price, description, rating } = product;
 
-  const inBasketProduct = basket.some((item) => item.id === id);
+  const [onBasketClick, inBasketProduct] = useBasketClick(id, product, {
+    withStopPropagation: true,
+  });
 
-  function handleBasketClick(event) {
-    event.stopPropagation();
-
-    return inBasketProduct
-      ? dispatch(removeProductAction(id))
-      : dispatch(addProductAction(product));
+  function handleClick() {
+    if (onClick) onClick(id);
   }
 
   return (
-    <StyledCard onClick={() => handleCardClick(id)}>
+    <StyledCard isHovered={onClick} onClick={handleClick}>
       <ProductPicture src={image} alt="product" />
       <Title>{cutStringIfNeeded(title, 20)}</Title>
       <Price>${price}</Price>
       <Description>{cutStringIfNeeded(description, 70)}</Description>
-      <Block>
+      <Flex center between>
         <Stars rating={rating} />
-        <Button active={inBasketProduct} onClick={handleBasketClick}>
-          <HeartIcon />
+        <Button onClick={onBasketClick} isActive={inBasketProduct} size="small">
           Basket
         </Button>
-      </Block>
+      </Flex>
     </StyledCard>
   );
 }

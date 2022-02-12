@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { mainColor, mainFont } from "../../../utils/constants";
+import { mainFont } from "../../../utils/constants";
 
 export const Wrapper = styled.div`
   height: 100vh;
@@ -12,9 +12,23 @@ export const Wrapper = styled.div`
 
 export const Message = styled.span`
   font-family: ${mainFont};
-  color: ${mainColor};
-  font-weight: bold;
+  color: silver;
   font-size: 24px;
-  line-height: 36px;
-  padding-bottom: 20px;
+  line-height: 24px;
+  text-align: center;
+
+  @media screen and (max-width: 575px) {
+    font-size: 20px;
+  }
+`;
+
+export const Image = styled.img`
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+
+  @media screen and (max-width: 575px) {
+    width: 300px;
+    height: 300px;
+  }
 `;

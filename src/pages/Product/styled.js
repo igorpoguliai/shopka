@@ -1,10 +1,11 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import {
   fontRoboto,
   mainColor,
   mainFont,
   skyColor,
 } from "../../utils/constants";
+import { StyledButton } from "../../components/common/Button/styled";
 
 export const Container = styled.div`
   max-width: 1420px;
@@ -15,7 +16,7 @@ export const Container = styled.div`
 
 export const Main = styled.main`
   font-family: ${mainFont};
-  margin: 40px 0 60px;
+  margin: 100px 0 60px;
   display: flex;
 
   @media screen and (max-width: 991px) {
@@ -52,6 +53,7 @@ export const Price = styled.h2`
   font-weight: bold;
   font-size: 48px;
   line-height: 72px;
+  padding-bottom: 8px;
 `;
 
 export const Wrapper = styled.div`
@@ -79,51 +81,9 @@ export const Wrapper = styled.div`
       background: none;
     }
   }
-`;
 
-export const Block = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 8px 0 26px;
-`;
-
-export const Button = styled.button`
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  background: none;
-  padding: 6px 22px 6px 11px;
-  border: 1px solid #9dc2ff;
-  border-radius: 4px;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  color: ${mainColor};
-  cursor: pointer;
-  margin-right: 27px;
-
-  svg {
-    stroke: #2979ff;
-    stroke-width: 5px;
-    width: 14px;
-    height: 13px;
-    fill: white;
-
-    ${({ active }) =>
-      active &&
-      css`
-        stroke-width: 2px;
-        fill: #f44336;
-        stroke: #f44336;
-      `}
-  }
-
-  &:active {
-    svg {
-      opacity: 0;
-      transform: scale(5);
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
+  ${StyledButton} {
+    margin-right: 27px;
   }
 `;
 
@@ -131,4 +91,5 @@ export const Description = styled.p`
   max-width: 680px;
   font-size: 16px;
   line-height: 24px;
+  padding-top: 26px;
 `;

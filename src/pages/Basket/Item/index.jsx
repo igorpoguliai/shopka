@@ -7,18 +7,16 @@ import {
   Description,
   Price,
   Wrapper,
-  Decrement,
-  Increment,
+  Count,
   Sum,
   Remove,
-  Block,
   Info,
 } from "./styled";
+import { Flex } from "../../../components/common/styled";
 import { cutStringIfNeeded } from "../../../utils/helpers";
 import {
   removeProductAction,
-  setDecrementAction,
-  setIncrementAction,
+  setBasketAction,
 } from "../../../redux/basket/action";
 import { useDispatch } from "react-redux";
 
@@ -39,23 +37,26 @@ export default function BasketItem({ product, handlePictureClick }) {
         <Price>${price}</Price>
       </Info>
       <Wrapper>
-        <Decrement
+        <Count
           disabled={count <= 1}
-          onClick={() => dispatch(setDecrementAction(id))}
+          onClick={() => dispatch(setBasketAction(id, "decrement"))}
         >
           <MinusIcon />
-        </Decrement>
+        </Count>
         {count}
-        <Increment onClick={() => dispatch(setIncrementAction(id))}>
+        <Count
+          disabled={count === 10}
+          onClick={() => dispatch(setBasketAction(id, "increment"))}
+        >
           <PlusIcon />
-        </Increment>
+        </Count>
       </Wrapper>
-      <Block>
+      <Flex column center between>
         <Sum>${(price * count).toFixed(2)}</Sum>
         <Remove onClick={() => dispatch(removeProductAction(id))}>
           Remove
         </Remove>
-      </Block>
+      </Flex>
     </Product>
   );
 }

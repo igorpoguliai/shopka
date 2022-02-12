@@ -1,10 +1,9 @@
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import Header from "../../components/Header";
 import BasketItem from "./Item";
-import { Container, Main, Wrapper, Total, Button } from "./styled";
-import { setBasketCheckoutAction } from "../../redux/basket/action";
 import EmpyScreen from "../../components/common/EmpyScreen";
+import { Container, Main, Wrapper, Total, Button } from "./styled";
+import { useDispatch, useSelector } from "react-redux";
+import { setBasketCheckoutAction } from "../../redux/basket/action";
 import { useNavigate } from "react-router";
 
 export default function BasketPage() {

@@ -3,13 +3,13 @@ import { Rating, Rate } from "./styled";
 
 export default function Stars({ rating }) {
   return (
-    <>
+    <div>
       {[1, 2, 3, 4, 5].map((stars) => (
         <Rating key={stars} active={stars <= Math.round(rating.rate)}>
           <StarIcon />
         </Rating>
       ))}
       <Rate>{rating.rate}</Rate>
-    </>
+    </div>
   );
 }

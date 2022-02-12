@@ -7,12 +7,18 @@ import {
 } from "../../../utils/constants";
 
 export const Product = styled.div`
+  max-width: 780px;
+  width: 100%;
   box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
   padding: 14px 16px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 32px;
+
+  @media screen and (max-width: 1198px) {
+    max-width: 100%;
+  }
 
   @media screen and (max-width: 767px) {
     flex-direction: column;
@@ -62,7 +68,7 @@ export const Wrapper = styled.div`
   padding: 0 2px;
 `;
 
-export const Decrement = styled.button`
+export const Count = styled.button`
   width: 32px;
   height: 32px;
   border-radius: 50px;
@@ -83,26 +89,19 @@ export const Decrement = styled.button`
       }
     `}
 
-  &:active {
-    svg {
-      transform: scale(0.9);
+  &:first-child {
+    &:active {
+      svg {
+        transform: scale(0.9);
+      }
     }
   }
-`;
 
-export const Increment = styled.button`
-  width: 32px;
-  height: 32px;
-  border-radius: 50px;
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-
-  &:active {
-    svg {
-      transform: scale(1.1);
+  &:last-child {
+    &:active {
+      svg {
+        transform: scale(1.1);
+      }
     }
   }
 `;
@@ -137,11 +136,4 @@ export const Info = styled.div`
     text-align: center;
     padding: 10px 0 0;
   }
-`;
-
-export const Block = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
 `;

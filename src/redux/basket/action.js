@@ -1,8 +1,7 @@
 import {
   ADD_PRODUCT,
-  DECREMENT,
-  INCREMENT,
   REMOVE_PRODUCT,
+  SET_BASKET_COUNT,
   BASKET_CHECKOUT,
 } from "./types";
 
@@ -20,17 +19,10 @@ export function removeProductAction(id) {
   };
 }
 
-export function setIncrementAction(id) {
+export function setBasketAction(id, direction) {
   return {
-    type: INCREMENT,
-    payload: { id },
-  };
-}
-
-export function setDecrementAction(id) {
-  return {
-    type: DECREMENT,
-    payload: { id },
+    type: SET_BASKET_COUNT,
+    payload: { id, direction },
   };
 }
 
