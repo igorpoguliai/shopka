@@ -12,6 +12,7 @@ export const StyledHeader = styled.header`
   top: 0;
   width: 100%;
   background: #ffffff;
+  z-index: 1;
 `;
 
 export const Wrapper = styled.div`

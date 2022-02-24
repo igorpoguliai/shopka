@@ -16,10 +16,7 @@ export default function basketReducer(state = initialState, action) {
 
       return {
         ...state,
-        basket: [
-          ...state.basket,
-          { ...product, count: 1, finalAmount: product.price },
-        ],
+        basket: [...state.basket, { ...product, count: 1 }],
       };
     }
 
@@ -33,7 +30,7 @@ export default function basketReducer(state = initialState, action) {
     }
 
     case SET_BASKET_COUNT: {
-      const { id, direction } = action.payload;
+      const { direction, id } = action.payload;
       const isIncrement = direction === "increment";
 
       return {

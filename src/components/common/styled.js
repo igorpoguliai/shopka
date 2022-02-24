@@ -12,3 +12,11 @@ export const Flex = styled.div`
   ${({ full }) => full && `width: 100%;`}
   ${({ wrap }) => wrap && `flex-wrap: wrap;`}
 `;
+
+export const MOBILE_SM_BREAKPOINT = 374;
+export const MOBILE_MD_BREAKPOINT = 575;
+export const MOBILE_LG_BREAKPOINT = 767;
+export const TABLET_BREAKPOINT = 991;
+export const LAPTOP_BREAKPOINT = 1023;
+export const DESKTOP_SM_BREAKPOINT = 1198;
+export const DESKTOP_MD_BREAKPOINT = 1279;

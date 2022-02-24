@@ -1,29 +1,27 @@
 import Header from "../../components/Header";
 import Card from "./Card";
-import {
-  Main,
-  Container,
-  Aside,
-  Button,
-  Sort,
-  Select,
-  Block,
-  Wrapper,
-} from "./styled";
-import { ReactComponent as Arrow } from "./icons/arrow.svg";
 import Loading from "../../components/common/Spinner";
+import Select from "../../components/common/Select";
+import Categories from "./Categories";
+import { Main, CardsContainer, MainContainer, Aside, Title } from "./styled";
 import { Flex } from "../../components/common/styled";
-import { useEffect } from "react";
+import { ReactComponent as ArrowIcon } from "../../assets/icons/arrow.svg";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { getCardsAction } from "../../redux/products/action";
-import { setActiveCategoryAction } from "../../redux/products/action";
+import {
+  getCardsAction,
+  setActiveCategoryAction,
+  setSortCardsAction,
+} from "../../redux/products/action";
+import { SORT_TYPE } from "../../utils/constants";
+import { sortProducts } from "./helpers";
 
 export default function MainPage() {
+  const [state, setState] = useState({ isOpen: false });
   const dispatch = useDispatch();
-  const { products, categories, activeCategory } = useSelector(
-    ({ cards }) => cards
-  );
+  const { products, categories, activeCategory, loading, activeSort } =
+    useSelector(({ cards }) => cards);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,53 +32,75 @@ export default function MainPage() {
     navigate(`/card/${id}`);
   }
 
+  function handleCategoryClick(category) {
+    dispatch(setActiveCategoryAction(category));
+  }
+
+  function handleSortClick(event) {
+    dispatch(setSortCardsAction(event.target.value));
+  }
+
+  function handleSelectClick() {
+    setState((prevState) => ({
+      isOpen: !prevState.isOpen,
+    }));
+  }
+
   const filterCardsToCategory = activeCategory
     ? products?.filter((item) => item.category === activeCategory)
     : products;
 
+  const options = [
+    {
+      label: "cheap to expensive",
+      value: SORT_TYPE.CHEAP_TO_EXP,
+    },
+    {
+      label: "expensive to cheap",
+      value: SORT_TYPE.EXP_TO_CHEAP,
+    },
+    {
+      label: "rating",
+      value: SORT_TYPE.RATING,
+    },
+  ];
+
+  const sorted = sortProducts(filterCardsToCategory, activeSort);
+
   return (
-    <Flex>
+    <>
       <Header />
-      <Aside>
-        Categories
-        <Button
-          onClick={() => dispatch(setActiveCategoryAction(null))}
-          active={!activeCategory}
-        >
-          All
-        </Button>
-        {categories?.map((category) => (
-          <Button
-            onClick={() => dispatch(setActiveCategoryAction(category))}
-            key={category}
-            active={category === activeCategory}
-          >
-            {category[0].toUpperCase() + category.slice(1)}
-          </Button>
-        ))}
-        <Sort>SORT BY</Sort>
-        <Wrapper>
-          <Select>
-            <option>from cheap to expensive</option>
-            <option>from expensive to cheap</option>
-            <option>by rating</option>
-          </Select>
-          <Block>
-            <Arrow />
-          </Block>
-        </Wrapper>
-      </Aside>
-      <Container>
-        {products ? (
-          <Main>
-            {filterCardsToCategory.map((item) => (
-              <Card key={item.id} product={item} onClick={handleCardClick} />
-            ))}
-          </Main>
-        ) : (
-          <Loading />
-        )}
-      </Container>
-    </Flex>
+      {!loading && products ? (
+        <MainContainer>
+          <Aside>
+            <Categories
+              handleCategoryClick={handleCategoryClick}
+              activeCategory={activeCategory}
+              categories={categories}
+            />
+            <Flex column>
+              <Title>SORT BY</Title>
+              <Select
+                Icon={ArrowIcon}
+                options={options}
+                value={activeSort}
+                onChange={handleSortClick}
+                onClick={handleSelectClick}
+                isOpen={state.isOpen}
+              />
+            </Flex>
+          </Aside>
+          <CardsContainer>
+            <Main>
+              {sorted.map((item) => (
+                <Card key={item.id} product={item} onClick={handleCardClick} />
+              ))}
+            </Main>
+          </CardsContainer>
+        </MainContainer>
+      ) : (
+        <Loading />
+      )}
+    </>
   );
 }

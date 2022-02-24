@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { mainColor } from "../../../utils/constants";
+import { MOBILE_LG_BREAKPOINT, TABLET_BREAKPOINT } from "../styled";
 
 export const Wrapper = styled.div`
   height: 100vh;
@@ -8,7 +9,7 @@ export const Wrapper = styled.div`
 
 export const Spinner = styled.div`
   color: ${mainColor};
-  font-size: 75px;
+  font-size: 55px;
   overflow: hidden;
   width: 1em;
   height: 1em;
@@ -119,15 +120,11 @@ export const Spinner = styled.div`
     }
   }
 
-  @media screen and (max-width: 991px) {
-    font-size: 65px;
-  }
-
-  @media screen and (max-width: 767px) {
-    font-size: 55px;
-  }
-
-  @media screen and (max-width: 575px) {
+  @media screen and (max-width: ${TABLET_BREAKPOINT}px) {
     font-size: 45px;
+  }
+
+  @media screen and (max-width: ${MOBILE_LG_BREAKPOINT}px) {
+    font-size: 35px;
   }
 `;

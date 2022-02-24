@@ -1,11 +1,37 @@
-import styled, { css } from "styled-components";
-import { fontRoboto, mainColor, mainFont } from "../../utils/constants";
+import styled from "styled-components";
+import { fontRoboto, secondColor } from "../../utils/constants";
+import {
+  DESKTOP_SM_BREAKPOINT,
+  LAPTOP_BREAKPOINT,
+  MOBILE_LG_BREAKPOINT,
+  MOBILE_MD_BREAKPOINT,
+  TABLET_BREAKPOINT,
+} from "../../components/common/styled";
 
-export const Container = styled.div`
+export const CardsContainer = styled.div`
   max-width: 1145px;
+  width: 100%;
+  padding-left: 30px;
+
+  @media screen and (max-width: ${DESKTOP_SM_BREAKPOINT}px) {
+    padding-left: 20px;
+  }
+
+  @media screen and (max-width: ${TABLET_BREAKPOINT}px) {
+    padding-left: 0;
+  }
+`;
+
+export const MainContainer = styled.div`
+  max-width: 1445px;
   width: 100%;
   padding: 0 15px;
   margin: 0 auto;
+  display: flex;
+
+  @media screen and (max-width: ${TABLET_BREAKPOINT}px) {
+    flex-direction: column;
+  }
 `;
 
 export const Main = styled.main`
@@ -19,97 +45,48 @@ export const Main = styled.main`
   grid-row-gap: 25px;
   grid-template-columns: repeat(4, 1fr);
 
-  @media screen and (max-width: 1198px) {
+  @media screen and (max-width: ${DESKTOP_SM_BREAKPOINT}px) {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media screen and (max-width: 991px) {
+  @media screen and (max-width: ${LAPTOP_BREAKPOINT}px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: ${TABLET_BREAKPOINT}px) {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 70px;
+  }
+
+  @media screen and (max-width: ${MOBILE_LG_BREAKPOINT}px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media screen and (max-width: 575px) {
+  @media screen and (max-width: ${MOBILE_MD_BREAKPOINT}px) {
     grid-template-columns: repeat(1, 1fr);
   }
 `;
 
 export const Aside = styled.aside`
-  font-family: ${mainFont};
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 36px;
   margin-top: 100px;
-  padding: 0 55px 0 15px;
-`;
+  position: sticky;
+  top: 65px;
+  height: 0;
 
-export const Button = styled.button`
-  font-family: ${fontRoboto};
-  font-size: 14px;
-  line-height: 20px;
-  background: none;
-  cursor: pointer;
-  color: #5a5b6a;
-  display: block;
-  padding: 17px 0;
-
-  &:hover {
-    transform: scale(1.1);
-    transition: 0.3s;
+  @media screen and (max-width: ${TABLET_BREAKPOINT}px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: static;
+    height: auto;
   }
-
-  ${({ active }) =>
-    active &&
-    css`
-      font-size: 16px;
-      line-height: 24px;
-      color: #2264d1;
-
-      &:hover {
-        transform: scale(1);
-      }
-    `}
 `;
 
-export const Wrapper = styled.div`
-  position: relative;
-`;
-
-export const Block = styled.div`
-  position: absolute;
-  top: -2px;
-  right: 12px;
-  pointer-events: none;
-`;
-
-export const Sort = styled.div`
+export const Title = styled.h3`
   font-family: ${fontRoboto};
   font-weight: 500;
   font-size: 10px;
   line-height: 16px;
-  color: #787885;
+  color: ${secondColor};
   padding: 23px 0 0 13px;
-`;
-
-export const Select = styled.select`
-  font-family: ${mainFont};
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  max-width: 185px;
-  width: 100%;
-  background: none;
-  border-radius: 4px;
-  padding: 6px 30px 6px 12px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  appearance: none;
-  cursor: pointer;
-
-  &:focus {
-    outline: 0;
-    border: 2px solid ${mainColor};
-  }
 `;

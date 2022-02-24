@@ -52,7 +52,7 @@ export const StyledButton = styled.button`
   width: auto;
 
   &:hover {
-    transition: 0.3s;
     transform: scale(1.05); 
+    transition: 0.3s;
   `}
 `;

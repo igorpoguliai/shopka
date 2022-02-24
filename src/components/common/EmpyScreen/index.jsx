@@ -1,11 +1,10 @@
 import { Message, Wrapper, Image } from "./styled";
-import emptyBasket from "./images/empty-basket.png";
 
-export default function EmpyScreen() {
+export default function EmpyScreen({ picture, message }) {
   return (
-    <Wrapper>
-      <Image src={emptyBasket} alt="empty basket" />
-      <Message>Your basket is empty... Back to products!</Message>
+    <Wrapper center justifyCenter column>
+      <Image src={picture} alt="empty basket" />
+      <Message>{message}</Message>
     </Wrapper>
   );
 }

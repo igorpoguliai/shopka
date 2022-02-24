@@ -1,5 +1,6 @@
 import Stars from "../../../components/common/Rating";
 import Button from "../../../components/common/Button";
+import { ReactComponent as HeartIcon } from "../../../assets/icons/heart.svg";
 import { cutStringIfNeeded } from "../../../utils/helpers";
 import {
   StyledCard,
@@ -30,7 +31,12 @@ export default function Card({ product, onClick }) {
       <Description>{cutStringIfNeeded(description, 70)}</Description>
       <Flex center between>
         <Stars rating={rating} />
-        <Button onClick={onBasketClick} isActive={inBasketProduct} size="small">
+        <Button
+          onClick={onBasketClick}
+          Icon={HeartIcon}
+          isActive={inBasketProduct}
+          size="small"
+        >
           Basket
         </Button>
       </Flex>

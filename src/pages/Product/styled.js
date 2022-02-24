@@ -6,6 +6,10 @@ import {
   skyColor,
 } from "../../utils/constants";
 import { StyledButton } from "../../components/common/Button/styled";
+import {
+  MOBILE_MD_BREAKPOINT,
+  TABLET_BREAKPOINT,
+} from "../../components/common/styled";
 
 export const Container = styled.div`
   max-width: 1420px;
@@ -19,7 +23,7 @@ export const Main = styled.main`
   margin: 100px 0 60px;
   display: flex;
 
-  @media screen and (max-width: 991px) {
+  @media screen and (max-width: ${TABLET_BREAKPOINT}px) {
     flex-direction: column;
     align-items: center;
   }
@@ -33,7 +37,7 @@ export const ProductPicture = styled.img`
   border-radius: 20px;
   object-fit: contain;
 
-  @media screen and (max-width: 575px) {
+  @media screen and (max-width: ${MOBILE_MD_BREAKPOINT}px) {
     max-width: 420px;
     max-height: 425px;
   }
@@ -44,7 +48,7 @@ export const Title = styled.h1`
   font-size: 28px;
   line-height: 42px;
 
-  @media screen and (max-width: 991px) {
+  @media screen and (max-width: ${TABLET_BREAKPOINT}px) {
     padding-top: 10px;
   }
 `;

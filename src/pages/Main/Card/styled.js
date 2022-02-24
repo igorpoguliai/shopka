@@ -6,12 +6,12 @@ export const StyledCard = styled.div`
   width: 260px;
   padding: 16px 16px 12px;
   margin: auto;
+  transition: all 0.3s;
 
   ${({ isHovered }) =>
     isHovered &&
     css`
       &:hover {
-        transition: 0.3s;
         box-shadow: 0px 2px 4px rgba(59, 69, 123, 0.2),
           0px 4px 8px rgba(92, 107, 192, 0.2);
         border-radius: 8px;

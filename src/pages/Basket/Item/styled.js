@@ -1,10 +1,15 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import {
   fontRoboto,
   mainColor,
   secondColor,
   skyColor,
 } from "../../../utils/constants";
+import {
+  Flex,
+  DESKTOP_SM_BREAKPOINT,
+  MOBILE_LG_BREAKPOINT,
+} from "../../../components/common/styled";
 
 export const Product = styled.div`
   max-width: 780px;
@@ -16,11 +21,11 @@ export const Product = styled.div`
   justify-content: space-between;
   margin-bottom: 32px;
 
-  @media screen and (max-width: 1198px) {
+  @media screen and (max-width: ${DESKTOP_SM_BREAKPOINT}px) {
     max-width: 100%;
   }
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: ${MOBILE_LG_BREAKPOINT}px) {
     flex-direction: column;
     align-items: center;
   }
@@ -53,66 +58,13 @@ export const Price = styled.h2`
   line-height: 36px;
 `;
 
-export const Wrapper = styled.div`
-  max-width: 166px;
-  height: 36px;
-  width: 100%;
-  margin: 0 30px;
-  background: #f0f0f0;
-  border-radius: 50px;
-  font-size: 14px;
-  line-height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2px;
-`;
-
-export const Count = styled.button`
-  width: 32px;
-  height: 32px;
-  border-radius: 50px;
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-
-  ${({ disabled }) =>
-    disabled &&
-    css`
-      background: rgba(255, 255, 255, 0.28);
-      cursor: default;
-
-      svg path {
-        stroke: rgba(0, 0, 0, 0.22);
-      }
-    `}
-
-  &:first-child {
-    &:active {
-      svg {
-        transform: scale(0.9);
-      }
-    }
-  }
-
-  &:last-child {
-    &:active {
-      svg {
-        transform: scale(1.1);
-      }
-    }
-  }
-`;
-
 export const Sum = styled.span`
   font-weight: bold;
   font-size: 24px;
   line-height: 36px;
 `;
 
-export const Remove = styled.button`
+export const ButtonRemove = styled.button`
   font-family: ${fontRoboto};
   font-weight: bold;
   font-size: 24px;
@@ -130,10 +82,18 @@ export const Remove = styled.button`
 
 export const Info = styled.div`
   width: 350px;
-  padding-left: 27px;
+  margin: 0 30px;
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: ${MOBILE_LG_BREAKPOINT}px) {
     text-align: center;
     padding: 10px 0 0;
+  }
+`;
+
+export const Wrapper = styled(Flex)`
+  margin-left: 30px;
+
+  @media screen and (max-width: ${MOBILE_LG_BREAKPOINT}px) {
+    margin: 0;
   }
 `;

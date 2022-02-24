@@ -1,9 +1,17 @@
-import { GET_CARDS, SET_ACTIVE_CATEGORY } from "./types";
+import { SORT_TYPE } from "../../utils/constants";
+import {
+  GET_CARDS,
+  SET_ACTIVE_CATEGORY,
+  SET_LOADING,
+  SET_SORT_CARDS,
+} from "./types";
 
 const initialState = {
   products: null,
   categories: null,
   activeCategory: null,
+  loading: false,
+  activeSort: SORT_TYPE.RATING,
 };
 
 export default function cardsReducer(state = initialState, action) {
@@ -24,6 +32,24 @@ export default function cardsReducer(state = initialState, action) {
       return {
         ...state,
         activeCategory: category,
+      };
+    }
+
+    case SET_LOADING: {
+      const { loading } = action.payload;
+
+      return {
+        ...state,
+        loading,
+      };
+    }
+
+    case SET_SORT_CARDS: {
+      const { value } = action.payload;
+
+      return {
+        ...state,
+        activeSort: value,
       };
     }
 

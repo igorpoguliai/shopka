@@ -1,6 +1,7 @@
 import Header from "../../components/Header";
 import BasketItem from "./Item";
 import EmpyScreen from "../../components/common/EmpyScreen";
+import emptyBasket from "../../assets/images/empty-basket.png";
 import { Container, Main, Wrapper, Total, Button } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
 import { setBasketCheckoutAction } from "../../redux/basket/action";
@@ -42,7 +43,10 @@ export default function BasketPage() {
             </Wrapper>
           </>
         ) : (
-          <EmpyScreen />
+          <EmpyScreen
+            picture={emptyBasket}
+            message={"Your basket is empty... Back to products!"}
+          />
         )}
       </Container>
     </>

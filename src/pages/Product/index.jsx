@@ -1,7 +1,9 @@
 import Header from "../../components/Header";
 import Stars from "../../components/common/Rating";
 import Button from "../../components/common/Button";
+import { Flex } from "../../components/common/styled";
 import Loading from "../../components/common/Spinner";
+import { ReactComponent as HeartIcon } from "../../assets/icons/heart.svg";
 import { ReactComponent as BurgerIcon } from "./icons/burger.svg";
 import {
   Container,
@@ -17,7 +19,6 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import useBasketClick from "../../hooks/useBasketClick";
-import { Flex } from "../../components/common/styled";
 
 export default function ProductPage() {
   const { id } = useParams();
@@ -40,7 +41,11 @@ export default function ProductPage() {
               <Title>{product.title}</Title>
               <Price>${product.price}</Price>
               <Flex center>
-                <Button onClick={onBasketClick} isActive={inBasketProduct}>
+                <Button
+                  onClick={onBasketClick}
+                  Icon={HeartIcon}
+                  isActive={inBasketProduct}
+                >
                   {inBasketProduct ? "Delete card" : "Add to card"}
                 </Button>
                 <Stars rating={product.rating} />

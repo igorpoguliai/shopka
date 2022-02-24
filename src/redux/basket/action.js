@@ -19,10 +19,10 @@ export function removeProductAction(id) {
   };
 }
 
-export function setBasketAction(id, direction) {
+export function setBasketAction(direction, id) {
   return {
     type: SET_BASKET_COUNT,
-    payload: { id, direction },
+    payload: { direction, id },
   };
 }
 

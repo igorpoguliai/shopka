@@ -1,4 +1,4 @@
-import { getRequest } from ".";
+import { getRequest } from "./index";
 
 export async function getProducts() {
   return await getRequest("products/");

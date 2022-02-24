@@ -1,13 +1,10 @@
 import styled from "styled-components";
+import { Flex, MOBILE_LG_BREAKPOINT, MOBILE_MD_BREAKPOINT } from "../styled";
 import { mainFont } from "../../../utils/constants";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(Flex)`
   height: 100vh;
   margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 `;
 
 export const Message = styled.span`
@@ -17,8 +14,12 @@ export const Message = styled.span`
   line-height: 24px;
   text-align: center;
 
-  @media screen and (max-width: 575px) {
+  @media screen and (max-width: ${MOBILE_LG_BREAKPOINT}px) {
     font-size: 20px;
+  }
+
+  @media screen and (max-width: ${MOBILE_MD_BREAKPOINT}px) {
+    font-size: 18px;
   }
 `;
 
@@ -27,8 +28,13 @@ export const Image = styled.img`
   height: 400px;
   object-fit: cover;
 
-  @media screen and (max-width: 575px) {
+  @media screen and (max-width: ${MOBILE_LG_BREAKPOINT}px) {
     width: 300px;
     height: 300px;
+  }
+
+  @media screen and (max-width: ${MOBILE_MD_BREAKPOINT}px) {
+    width: 250px;
+    height: 250px;
   }
 `;
