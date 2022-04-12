@@ -6,7 +6,7 @@ export default function Select({
   value,
   onChange,
   onClick,
-  isOpen,
+  open,
 }) {
   return (
     <SortWrapper>
@@ -17,7 +17,7 @@ export default function Select({
           </option>
         ))}
       </StyledSelect>
-      <Wrapper isOpen={isOpen}>{Icon && <Icon />}</Wrapper>
+      <Wrapper isOpen={open}>{Icon && <Icon />}</Wrapper>
     </SortWrapper>
   );
 }

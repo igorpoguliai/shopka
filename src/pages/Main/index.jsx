@@ -18,7 +18,7 @@ import { SORT_TYPE } from "../../utils/constants";
 import { sortProducts } from "./helpers";
 
 export default function MainPage() {
-  const [state, setState] = useState({ isOpen: false });
+  const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const { products, categories, activeCategory, loading, activeSort } =
     useSelector(({ cards }) => cards);
@@ -41,9 +41,7 @@ export default function MainPage() {
   }
 
   function handleSelectClick() {
-    setState((prevState) => ({
-      isOpen: !prevState.isOpen,
-    }));
+    setIsOpen(!isOpen);
   }
 
   const filterCardsToCategory = activeCategory
@@ -86,7 +84,7 @@ export default function MainPage() {
                 value={activeSort}
                 onChange={handleSortClick}
                 onClick={handleSelectClick}
-                isOpen={state.isOpen}
+                open={isOpen}
               />
             </Flex>
           </Aside>
